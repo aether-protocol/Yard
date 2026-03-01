@@ -524,6 +524,169 @@ footer{background:var(--bg0);border-top:1px solid var(--line);padding:80px 60px 
   .dash-kpi-row{grid-template-columns:repeat(2,1fr)}.dash-charts-row{grid-template-columns:1fr}.rings-row{grid-template-columns:repeat(2,1fr)}
   section{padding:80px 0}
 }
+  /* ===== ENVIRONMENT STYLES ===== */
+.env-city {
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.env-crane {
+  position: absolute;
+  bottom: 25%;
+  width: 200px;
+  height: 300px;
+  z-index: 1;
+  pointer-events: none;
+}
+.left-crane {
+  left: 5%;
+  transform: scale(0.9);
+  animation: craneSway 8s ease-in-out infinite;
+}
+.right-crane {
+  right: 5%;
+  transform: scale(1.1);
+  animation: craneSway 10s ease-in-out infinite reverse;
+}
+@keyframes craneSway {
+  0%,100% { transform: scale(0.9) rotate(-0.5deg); }
+  50% { transform: scale(0.9) rotate(0.5deg); }
+}
+.right-crane {
+  animation-name: craneSwayRight;
+}
+@keyframes craneSwayRight {
+  0%,100% { transform: scale(1.1) rotate(0.5deg); }
+  50% { transform: scale(1.1) rotate(-0.5deg); }
+}
+
+.env-tug {
+  position: absolute;
+  bottom: 28%;
+  left: 15%;
+  width: 120px;
+  height: 60px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+  animation: bob 6s ease-in-out infinite;
+}
+.env-workboat {
+  position: absolute;
+  bottom: 27%;
+  right: 18%;
+  width: 80px;
+  height: 40px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.3;
+  animation: bob 8s ease-in-out infinite;
+}
+@keyframes bob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.env-birds {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.bird {
+  animation: fly 18s infinite linear;
+}
+@keyframes fly {
+  0% { transform: translateX(-10%); }
+  100% { transform: translateX(110%); }
+}
+
+.env-cloud {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.3;
+}
+.cloud1 {
+  top: 10%;
+  left: 5%;
+  width: 300px;
+  animation: drift 20s infinite alternate;
+}
+.cloud2 {
+  top: 20%;
+  right: 5%;
+  width: 400px;
+  animation: drift 25s infinite alternate-reverse;
+}
+@keyframes drift {
+  0% { transform: translateX(-20px); }
+  100% { transform: translateX(20px); }
+}
+
+.env-sun {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0,212,255,0.1);
+  box-shadow: 0 0 50px rgba(0,212,255,0.3);
+  z-index: 1;
+  pointer-events: none;
+  animation: sunGlow 8s ease-in-out infinite;
+}
+@keyframes sunGlow {
+  0%,100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.env-reflections {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  animation: shimmer 10s infinite;
+}
+@keyframes shimmer {
+  0%,100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.env-pilings {
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  pointer-events: none;
+}
+.piling {
+  position: absolute;
+  width: 4px;
+  height: 40px;
+  background: rgba(0,212,255,0.2);
+  transform: translateY(-50%);
+  box-shadow: 0 0 8px rgba(0,212,255,0.3);
+}
+/* ===== END ENVIRONMENT STYLES ===== */
+  
 </style>
 </head>
 <body>
@@ -552,7 +715,9 @@ footer{background:var(--bg0);border-top:1px solid var(--line);padding:80px 60px 
 </nav>
 
 <!-- HERO -->
+<!-- HERO -->
 <section id="hero">
+  <!-- Existing background layers -->
   <div class="hero-aurora"></div>
   <div class="hero-horizon"></div>
   <div class="particles" id="particles"></div>
@@ -561,14 +726,200 @@ footer{background:var(--bg0);border-top:1px solid var(--line);padding:80px 60px 
     <div class="radar-sweep"></div><div class="radar-cross-h"></div><div class="radar-cross-v"></div>
     <div class="radar-blip rb1"></div><div class="radar-blip rb2"></div><div class="radar-blip rb3"></div>
   </div>
-  <svg class="hero-ship" viewBox="0 0 600 100" fill="none">
-    <path d="M20 80 L60 65 L120 55 L180 48 L280 42 L380 45 L460 55 L520 65 L570 78 L580 82 L20 85 Z" fill="#00d4ff"/>
-    <rect x="140" y="22" width="18" height="34" fill="#00d4ff"/><rect x="125" y="10" width="48" height="18" rx="1" fill="#00d4ff"/>
-    <rect x="115" y="6" width="20" height="8" fill="#00d4ff"/><rect x="200" y="30" width="14" height="26" fill="#00d4ff"/>
-    <rect x="190" y="22" width="34" height="14" fill="#00d4ff"/><rect x="310" y="28" width="10" height="20" fill="#00d4ff"/>
-    <path d="M0 86 Q300 74 600 84 L600 100 L0 100 Z" fill="#00d4ff" opacity="0.4"/>
-  </svg>
+
+  <!-- ===== NEW ENVIRONMENT ELEMENTS ===== -->
+  <!-- Distant city skyline -->
+  <div class="env-city">
+    <svg width="100%" height="100%" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid meet">
+      <polygon points="100,350 150,250 200,300 250,200 300,280 350,150 400,220 450,180 500,250 550,200 600,280 650,230 700,300 750,250 800,320 850,280 900,350 950,300 1000,350 1050,320 1100,350" fill="#00d4ff" fill-opacity="0.08"/>
+    </svg>
+  </div>
+
+  <!-- Shipyard cranes (animated) -->
+  <div class="env-crane left-crane">
+    <svg width="180" height="300" viewBox="0 0 180 300">
+      <rect x="70" y="100" width="40" height="180" fill="#00d4ff" fill-opacity="0.1"/>
+      <rect x="40" y="80" width="100" height="20" fill="#00d4ff" fill-opacity="0.15"/>
+      <line x1="20" y1="80" x2="160" y2="80" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.2"/>
+      <polygon points="20,80 90,10 160,80" fill="none" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.2" stroke-dasharray="4 4"/>
+      <circle cx="90" cy="100" r="8" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.2"/>
+      <g class="crane-jib">
+        <line x1="90" y1="100" x2="30" y2="40" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.2"/>
+        <line x1="90" y1="100" x2="150" y2="40" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.2"/>
+      </g>
+    </svg>
+  </div>
+  <div class="env-crane right-crane">
+    <svg width="200" height="320" viewBox="0 0 200 320">
+      <rect x="80" y="120" width="40" height="180" fill="#00d4ff" fill-opacity="0.1"/>
+      <rect x="50" y="100" width="100" height="20" fill="#00d4ff" fill-opacity="0.15"/>
+      <line x1="30" y1="100" x2="170" y2="100" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.2"/>
+      <polygon points="30,100 100,20 170,100" fill="none" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.2" stroke-dasharray="4 4"/>
+      <circle cx="100" cy="120" r="8" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.2"/>
+    </svg>
+  </div>
+
+  <!-- Small vessels (tug and workboat) -->
+  <div class="env-tug">
+    <svg width="120" height="60" viewBox="0 0 120 60">
+      <rect x="10" y="25" width="100" height="20" rx="4" fill="#00d4ff" fill-opacity="0.2"/>
+      <rect x="30" y="15" width="40" height="12" rx="2" fill="#00d4ff" fill-opacity="0.15"/>
+      <circle cx="30" cy="40" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.3"/>
+      <circle cx="80" cy="40" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.3"/>
+      <line x1="110" y1="30" x2="118" y2="30" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.3"/>
+      <line x1="110" y1="35" x2="118" y2="35" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="env-workboat">
+    <svg width="80" height="40" viewBox="0 0 80 40">
+      <rect x="5" y="15" width="70" height="12" rx="2" fill="#00d4ff" fill-opacity="0.2"/>
+      <rect x="25" y="8" width="30" height="8" rx="1" fill="#00d4ff" fill-opacity="0.1"/>
+      <circle cx="20" cy="25" r="3" fill="#010d18"/>
+      <circle cx="55" cy="25" r="3" fill="#010d18"/>
+    </svg>
+  </div>
+
+  <!-- Seabirds (animated) -->
+  <div class="env-birds">
+    <svg width="100%" height="100%" viewBox="0 0 1200 400">
+      <g class="bird" style="animation: fly 18s infinite linear;">
+        <path d="M100,100 Q110,90 120,100 T140,100" stroke="#00d4ff" stroke-width="1.5" fill="none" stroke-opacity="0.3"/>
+        <path d="M200,150 Q210,140 220,150 T240,150" stroke="#00d4ff" stroke-width="1.5" fill="none" stroke-opacity="0.3"/>
+        <path d="M300,80 Q310,70 320,80 T340,80" stroke="#00d4ff" stroke-width="1.5" fill="none" stroke-opacity="0.3"/>
+        <path d="M400,200 Q410,190 420,200 T440,200" stroke="#00d4ff" stroke-width="1.5" fill="none" stroke-opacity="0.3"/>
+        <path d="M500,120 Q510,110 520,120 T540,120" stroke="#00d4ff" stroke-width="1.5" fill="none" stroke-opacity="0.3"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Clouds (slow drifting) -->
+  <div class="env-cloud cloud1">
+    <svg width="300" height="120" viewBox="0 0 300 120">
+      <ellipse cx="80" cy="40" rx="50" ry="20" fill="#00d4ff" fill-opacity="0.05"/>
+      <ellipse cx="140" cy="30" rx="60" ry="25" fill="#00d4ff" fill-opacity="0.05"/>
+      <ellipse cx="210" cy="45" rx="50" ry="20" fill="#00d4ff" fill-opacity="0.05"/>
+    </svg>
+  </div>
+  <div class="env-cloud cloud2">
+    <svg width="400" height="150" viewBox="0 0 400 150">
+      <ellipse cx="100" cy="60" rx="70" ry="30" fill="#00d4ff" fill-opacity="0.05"/>
+      <ellipse cx="200" cy="50" rx="80" ry="35" fill="#00d4ff" fill-opacity="0.05"/>
+      <ellipse cx="300" cy="70" rx="60" ry="25" fill="#00d4ff" fill-opacity="0.05"/>
+    </svg>
+  </div>
+
+  <!-- Sun/moon (glowing) -->
+  <div class="env-sun"></div>
+
+  <!-- Water reflections -->
+  <div class="env-reflections">
+    <svg width="100%" height="100%" viewBox="0 0 1200 400">
+      <path d="M0 300 Q200 290 400 310 T800 290 T1200 310" stroke="#00d4ff" stroke-width="1" fill="none" stroke-opacity="0.1" stroke-dasharray="4 6"/>
+      <path d="M0 330 Q300 320 600 340 T1200 330" stroke="#00d4ff" stroke-width="1" fill="none" stroke-opacity="0.08" stroke-dasharray="6 8"/>
+    </svg>
+  </div>
+
+  <!-- Dock pilings -->
+  <div class="env-pilings">
+    <div class="piling" style="left:10%; bottom:30%;"></div>
+    <div class="piling" style="left:15%; bottom:30%;"></div>
+    <div class="piling" style="left:20%; bottom:30%;"></div>
+    <div class="piling" style="left:85%; bottom:30%;"></div>
+    <div class="piling" style="left:90%; bottom:30%;"></div>
+  </div>
+
+  <!-- ===== END NEW ENVIRONMENT ===== -->
+
+  <!-- Yacht (unchanged) -->
+  <svg class="hero-ship" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hullGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#00a8cc" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#006688" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Hull with gradient and water reflection -->
+  <path d="M20 160 L60 130 L140 110 L240 100 L360 100 L460 110 L540 130 L580 160 L580 190 L20 190 Z" fill="url(#hullGradient)"/>
+  <path d="M30 170 L70 145 L150 125 L250 115 L370 115 L470 125 L550 145 L570 170 L570 180 L30 180 Z" fill="#00d4ff" fill-opacity="0.2"/>
+
+  <!-- Main deck (teak effect with fine lines) -->
+  <rect x="40" y="150" width="520" height="6" fill="#00d4ff" fill-opacity="0.3"/>
+  <rect x="40" y="144" width="520" height="2" fill="#00d4ff" fill-opacity="0.5"/>
+
+  <!-- Lower deck portholes -->
+  <circle cx="100" cy="145" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1"/>
+  <circle cx="150" cy="143" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1"/>
+  <circle cx="200" cy="141" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1"/>
+  <circle cx="250" cy="140" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1"/>
+  <circle cx="300" cy="140" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1"/>
+  <circle cx="350" cy="141" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1"/>
+  <circle cx="400" cy="143" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1"/>
+  <circle cx="450" cy="145" r="5" fill="#010d18" stroke="#00d4ff" stroke-width="1"/>
+
+  <!-- Main superstructure (multiple decks) -->
+  <!-- Deck 1 (lower) -->
+  <rect x="100" y="100" width="380" height="40" rx="8" fill="#00d4ff" fill-opacity="0.7" stroke="#00a8cc" stroke-width="1"/>
+  <!-- Deck 2 (upper) -->
+  <rect x="140" y="70" width="300" height="30" rx="6" fill="#00d4ff" fill-opacity="0.8" stroke="#00a8cc" stroke-width="1"/>
+  <!-- Deck 3 (bridge deck) -->
+  <rect x="200" y="50" width="180" height="22" rx="4" fill="#00d4ff" fill-opacity="0.9" stroke="#00a8cc" stroke-width="1"/>
+
+  <!-- Bridge windows (tinted) -->
+  <rect x="220" y="56" width="25" height="12" rx="2" fill="#010d18" fill-opacity="0.7"/>
+  <rect x="260" y="56" width="25" height="12" rx="2" fill="#010d18" fill-opacity="0.7"/>
+  <rect x="300" y="56" width="25" height="12" rx="2" fill="#010d18" fill-opacity="0.7"/>
+  <rect x="340" y="56" width="25" height="12" rx="2" fill="#010d18" fill-opacity="0.7"/>
+
+  <!-- Radar arch -->
+  <rect x="380" y="30" width="12" height="40" fill="#00d4ff" fill-opacity="0.6"/>
+  <circle cx="386" cy="30" r="8" fill="#00d4ff" fill-opacity="0.8"/>
+  <circle cx="386" cy="30" r="4" fill="#00a8cc"/>
+
+  <!-- Satellite dome -->
+  <ellipse cx="410" cy="38" rx="12" ry="6" fill="#00d4ff" fill-opacity="0.9"/>
+  <ellipse cx="410" cy="38" rx="6" ry="3" fill="#00a8cc"/>
+
+  <!-- Funnel (exhaust) with metallic gradient -->
+  <rect x="320" y="20" width="30" height="40" rx="4" fill="url(#metalGradient)"/>
+  <ellipse cx="335" cy="20" rx="15" ry="6" fill="#00d4ff" fill-opacity="0.5"/>
+
+  <!-- Helipad on foredeck -->
+  <circle cx="280" cy="110" r="25" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="272" y="120" font-family="Share Tech Mono, monospace" font-size="12" fill="#00d4ff" fill-opacity="0.8">H</text>
+
+  <!-- Crane (tender handling) -->
+  <path d="M450 70 L480 30 L490 30 L470 70 Z" fill="#00d4ff" fill-opacity="0.5"/>
+  <circle cx="475" cy="30" r="4" fill="#00a8cc"/>
+
+  <!-- Garage door (for tenders) -->
+  <rect x="400" y="110" width="60" height="20" rx="2" fill="#00d4ff" fill-opacity="0.3" stroke="#00a8cc" stroke-width="1"/>
+
+  <!-- Life rafts (cylindrical) -->
+  <ellipse cx="160" cy="115" rx="12" ry="5" fill="#00d4ff" fill-opacity="0.6"/>
+  <ellipse cx="420" cy="115" rx="12" ry="5" fill="#00d4ff" fill-opacity="0.6"/>
+
+  <!-- Anchor detail -->
+  <path d="M70 170 L70 150 L80 150 L80 170" fill="#00a8cc" fill-opacity="0.5"/>
+  <circle cx="75" cy="170" r="5" fill="#00d4ff" fill-opacity="0.3"/>
+
+  <!-- Wake behind yacht (blurred) -->
+  <path d="M580 170 Q620 160 640 180 T700 170" stroke="#00d4ff" stroke-width="6" fill="none" stroke-opacity="0.2" filter="url(#blur)"/>
+  <path d="M580 175 Q630 165 660 185 T710 175" stroke="#00d4ff" stroke-width="4" fill="none" stroke-opacity="0.15" filter="url(#blur)"/>
+  <path d="M580 180 Q640 170 680 190 T720 180" stroke="#00d4ff" stroke-width="3" fill="none" stroke-opacity="0.1" filter="url(#blur)"/>
+</svg>
+
   <div class="wave-decor">≈</div>
+
   <div class="hero-content">
     <div class="hero-eyebrow">Integrated Shipyard Management System — YardMaster Pro v4.0 (Beta)</div>
     <h1 class="hero-title">COMMAND<br><span class="line2">YOUR YARD<span class="dot">.</span></span></h1>
